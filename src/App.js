@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Form from './Components/Form';
+import Get from './Components/Get';
+import Update from './Components/Update';
+import Navigation from './Components/Navigation';
+import NoPage from './Components/NoPage';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Form />} />
+          <Route path="get" element={<Get />} />
+          <Route path="update" element={<Update />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </div>
   );
 }
 
